@@ -1,0 +1,22 @@
+
+fieldset{
+
+    width: 500px;
+    
+    
+}
+.p-size label{
+ margin: 4px;
+border-style:dashed;
+align-items: center;   
+width: 50px; 
+}
+input{
+   
+}
+form{
+ display: flex;
+
+ justify-content: center;
+ 
+}

@@ -5,9 +5,60 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  align-items: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+html{
+  min-width: 1050px ;
+}
+
+/*Header*/
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.header div{
+text-align: right;
+margin-right: 10px;
+margin-bottom: 10px;
+
+}
+h1{
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+a{
+  padding:10px ;
+  background-color: aqua;
+  margin-top: 10px;
+
+
+}
+
+/*Header*/
+
+/*Banner*/
+div.pizza{
+  text-align: center;
+  position:absolute;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.img-banner{
+width: 1000px;
+height: 400px;
+object-fit: cover;
+
+}
+.main-banner{
+display: flex;
+justify-content: center;
 }
