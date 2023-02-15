@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   align-items: center;
+ 
 }
 
 code {
@@ -14,6 +15,7 @@ code {
 }
 html{
   min-width: 1050px ;
+  background-image: url("https://as2.ftcdn.net/v2/jpg/00/67/02/97/1000_F_67029766_AZGUAIDkxVz7O8qtMSr0a0sxvuRjkiCk.jpg");
 }
 
 /*Header*/
@@ -21,44 +23,89 @@ html{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0px;
 
 }
 .header div{
 text-align: right;
 margin-right: 10px;
-margin-bottom: 10px;
 
 }
 h1{
   text-align: left;
   margin-left: 10px;
-  margin-bottom: 2px;
+  
+  background-color: antiquewhite;
+  border-radius: 20%;
 }
 a{
   padding:10px ;
-  background-color: aqua;
-  margin-top: 10px;
-
-
+  background-color: azure;
+  text-align: center;
+  border-radius: 30%;
+  text-decoration: none;
+  border: 1px solid gray;
+}
+a:hover {
+  background-color: yellow;
 }
 
 /*Header*/
 
 /*Banner*/
-div.pizza{
+/* div.pizza{
   text-align: center;
-  position:absolute;
-  margin: 50px;
+  margin: 0px;
   display: flex;
   flex-direction: column;
+  padding: 6.9rem 6rem;
+  padding-bottom: 200px;
+  width: 100vh;
+ 
+
+} */
+.header{
+  background-image: url("https://as1.ftcdn.net/v2/jpg/03/66/73/36/1000_F_366733676_qTLsnBUZqNflzkE9bGgiMpurlkiUwUQc.jpg");
+ 
+  border-bottom: 2px solid;
+}
+.header img{
+  display: inline;
+  align-items: center;
+  width: 5vw;
+  border-radius: 70%;
+}
+/* .img-banner{
+width: 89vw;
+height: 435px;
+object-fit:fill;
+position:static;
+display: block;
+border: solid 1px black;
+} */
+.img-banner a {
+  width: 100px;
 }
 .img-banner{
-width: 1000px;
-height: 400px;
-object-fit: cover;
-
+  width: 50%;
+  margin: 2rem 1rem;
+  border: solid 2px black;
+  border-radius: 100%;
 }
-.main-banner{
-display: flex;
-justify-content: center;
+div.main-banner{
+  display: flex;
+  text-align: center;
+}
+
+.pizza{
+  display:block;
+  
+}
+div a {
+ width: 100px;
+ display: inline-block;
+ font-weight: bold;
+ color: black;
+ background-color: antiquewhite;
+ margin-right:5px ;
 }

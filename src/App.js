@@ -3,8 +3,8 @@ import Header from "./Components/Header";
 import Banner from "./Components/Banner"
 import Form from "./Components/Form";
 import { useState } from "react";
-const App = () => {
-
+const App = (props) => {
+const {dis}=props;
   const[orderlist,setOrderList]=useState([])
   
   function Orders(item){
@@ -23,14 +23,13 @@ console.log(orderlist)
       <Header/>
       <Switch>
         <Route path="/pizza" >
-          <Form submitCallBack={Orders}/>
+          <Form dis={dis} submitCallBack={Orders}/>
         </Route>
         <Route path="/">
           <Banner/>
         </Route>
       </Switch>
       
-    
     </div>
 
   
