@@ -34,9 +34,12 @@ margin-right: 10px;
 h1{
   text-align: left;
   margin-left: 10px;
-  
+  margin-bottom: 5px;
+  margin-top: 5px;
   background-color: antiquewhite;
-  border-radius: 20%;
+  border-radius: 80%;
+  padding: 10px;
+  
 }
 a{
   padding:10px ;

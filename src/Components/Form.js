@@ -1,10 +1,11 @@
 import React,{ useEffect, useState } from "react";
 import "./Form.css";
 import * as Yup from "yup"
+import axios from "axios";
  //YUPPP GELİYOR
 
  const userSchema = Yup.object().shape({
-  isim:Yup.string().required("İsim Giriniz").min(2,"İsim en az 2 karakter olmalıdır"),
+  isim:Yup.string().required().min(2,"İsim en az 2 karakter olmalıdır"),
   boyut:Yup.string().required("Boyut Seçiniz"),
   cesit:Yup.string().required("Bir Pizza Seçiniz"),
   malzeme1:Yup.string(),
@@ -13,7 +14,8 @@ import * as Yup from "yup"
 });
 
 const Form = (props) => {
-    const {submitCallBack}=props;
+    const {submitCallBack,orderlist,setOrderList}=props;
+
     const [order,setOrder]= useState(
         {
           isim: "",
@@ -44,6 +46,9 @@ const Form = (props) => {
       .then(()=> {SetOrderErr({...orderErr,[name]:""})})
       .catch((error)=>{SetOrderErr({...orderErr,[name]:error.errors[0]})})
     }
+    const showAlert=()=>{
+      alert("Siparişiniz Hazırlanıyorr !!")
+    }
 
       
       const pizza={select:["Eko Sucuklu Pizza",
@@ -60,7 +65,12 @@ const Form = (props) => {
         
         const handleSubmitOrder=(event)=>{
           event.preventDefault();
-        return submitCallBack(order);
+          // axios.post("https://reqres.in/api/orders",order).then((response)=>{
+          //   let orders=[...orderlist,response.name]
+          // setOrderList(orders);
+          
+          //  })
+         submitCallBack(order);
         }
         
         const handleChangeOrder= (event)=>{
@@ -69,8 +79,7 @@ const Form = (props) => {
         
           setOrder({...order,[name]:type==="checkbox" ? checked:value})
         }
-        
-  //  console.log(erorrCreate())
+       
   return (
     <form id="pizza-form" onSubmit={handleSubmitOrder}>
     <fieldset >
@@ -106,13 +115,13 @@ const Form = (props) => {
                 </div>
                 <div className="t-error">{orderErr.cesit !== "" && <p id="y-error">{orderErr.cesit}</p>}</div>
         </label>
-        <label htmlFor="extra-dropdown" >
+        <label htmlFor="extra-rad,o" >
                 <div className="p-extra">
                 <h3>Ek Malzeme</h3>
                 <div>
                 {pizza.extra.map((item)=>(
                     <label key={item}> {item}
-                         <input type="radio" id="extra-dropdown" name="malzeme1" value={item} onChange={handleChangeOrder}/>
+                         <input type="radio" id="extra-radio" name="malzeme1" value={item} onChange={handleChangeOrder}/>
                     </label>
                 
                     
@@ -120,13 +129,13 @@ const Form = (props) => {
                   </div>
                 </div>
         </label>
-        <label htmlFor="extra-dropdown" >
+        <label htmlFor="extra-radio" >
                 <div className="p-extra">
                 <h3>Ek Malzeme 2</h3>
                 <div>
                        {pizza.extra1.map((item)=>(
                         <label key={item}> {item}
-                          <input type="radio" id="extra-dropdown" name="malzeme2" value={item} onChange={handleChangeOrder}/>
+                          <input type="radio" id="extra-radio" name="malzeme2" value={item} onChange={handleChangeOrder}/>
                         </label>
                         ))} 
                     </div>
@@ -142,25 +151,7 @@ const Form = (props) => {
 
 
 
-        <button type="submit" id="order-button" disabled={dis} >Sipariş Ekle</button>
-{/* 
-        <label htmlFor="submit" >
-                <div className="p-extra">
-                <input type="button">Hadi Bakimm</input>
-               
-                </div>
-        </label> */}
-
-  
-     {/*<h3>Pizza Boyutu</h3>
-    
-        <input type="radio"></input>
-        <label for="s-big">Büyük Boy</label> 
-        <input type="radio"id="s-medium"value="medium-size"name="size"></input>
-        <label for="s-medium">Orta Boy</label>
-        <input type="radio"id="s-small" value="small-size" name="size"></input>
-        <label for="s-small">Küçük Boy</label>
-       */}
+        <button type="submit" id="order-button" disabled={dis} onClick={showAlert}>Sipariş Ekle</button>
   
        
 
