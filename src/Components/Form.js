@@ -12,21 +12,22 @@ import axios from "axios";
   malzeme2:Yup.string(),
   ozel:Yup.string(),
 });
+//checkbox , yupsuz kontrol
 
 const Form = (props) => {
     const {submitCallBack,orderlist,setOrderList}=props;
 
-    const [order,setOrder]= useState(
-        {
-          isim: "",
-          boyut: "",
-          cesit: "",  
-          malzeme1: false,
-          malzeme2: false,
-          ozel: "",
-      }
-      )
+    const emptyOrder={
+      isim: "",
+      boyut: "",
+      cesit: "",  
+      malzeme1: {firstM:"",secondM:"",thirdM:""},
+      malzeme2: "",
+      ozel: "",
+  }
+    const [order,setOrder]= useState(emptyOrder)
        //ERRORR    
+      
     const [orderErr,SetOrderErr]=useState({
       isim: "İsim Giriniz",
       boyut: "",
@@ -79,7 +80,14 @@ const Form = (props) => {
         
           setOrder({...order,[name]:type==="checkbox" ? checked:value})
         }
-       
+
+        // const handleChangeCheck= (event)=>{
+        //   const {value,name,type,checked}=event.target;
+        //   errorCreate(name,type==="checkbox" ? checked:value);
+        
+        //   setOrder({...order,[name]:type==="checkbox" ? checked:value})
+        // }
+        
   return (
     <form id="pizza-form" onSubmit={handleSubmitOrder}>
     <fieldset >
@@ -87,7 +95,7 @@ const Form = (props) => {
         
         <label>
             <h3>Teslimat İsmi</h3>
-            <input name="isim" id="name-input"type="text" value={order.isim} onChange={handleChangeOrder} ></input>
+            <input data-cy="name-checked" name="isim" id="name-input"type="text" value={order.isim} onChange={handleChangeOrder} ></input>
         </label>
         <div className="t-error">{orderErr.isim !== "" && <div>{orderErr.isim}</div>}</div>
         <label htmlFor="size-dropdown" >
@@ -108,6 +116,7 @@ const Form = (props) => {
                     <select name="cesit" id="s-dropdown" onChange={handleChangeOrder}value={order.cesit} >
                     <option id="e-pizza" value="" name="cesit">Lütfen Bir Pizza Seçiniz</option>
                        {pizza.select.map((item)=>(
+                        
                         <option key={item} id="e-pizza" value={item}name="cesit">{item}</option>
                        ))} 
                        
@@ -115,13 +124,13 @@ const Form = (props) => {
                 </div>
                 <div className="t-error">{orderErr.cesit !== "" && <p id="y-error">{orderErr.cesit}</p>}</div>
         </label>
-        <label htmlFor="extra-rad,o" >
+        <label htmlFor="extra-rad" >
                 <div className="p-extra">
                 <h3>Ek Malzeme</h3>
                 <div>
                 {pizza.extra.map((item)=>(
                     <label key={item}> {item}
-                         <input type="radio" id="extra-radio" name="malzeme1" value={item} onChange={handleChangeOrder}/>
+                         <input  type="checkbox" id="extra-radio" name={"malzeme1"} value={item} onChange={handleChangeOrder}/>
                     </label>
                 
                     
@@ -129,7 +138,7 @@ const Form = (props) => {
                   </div>
                 </div>
         </label>
-        <label htmlFor="extra-radio" >
+         <label htmlFor="extra-radio" >
                 <div className="p-extra">
                 <h3>Ek Malzeme 2</h3>
                 <div>
@@ -140,7 +149,7 @@ const Form = (props) => {
                         ))} 
                     </div>
                 </div>
-        </label>
+        </label> 
         <label htmlFor="special-text" >
                 <div className="p-special">
                 <h3>Bize bir notunuz var mı ?</h3>
@@ -151,7 +160,7 @@ const Form = (props) => {
 
 
 
-        <button type="submit" id="order-button" disabled={dis} onClick={showAlert}>Sipariş Ekle</button>
+        <button cy-data="submit-checked"type="submit" id="order-button" disabled={dis} onClick={showAlert}>Sipariş Ekle</button>
   
        
 

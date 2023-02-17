@@ -75,7 +75,7 @@ a:hover {
 .header img{
   display: inline;
   align-items: center;
-  width: 5vw;
+  height: 86px;
   border-radius: 70%;
 }
 /* .img-banner{
