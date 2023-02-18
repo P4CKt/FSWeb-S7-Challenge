@@ -8,7 +8,7 @@ import axios from "axios";
   isim:Yup.string().required().min(2,"İsim en az 2 karakter olmalıdır"),
   boyut:Yup.string().required("Boyut Seçiniz"),
   cesit:Yup.string().required("Bir Pizza Seçiniz"),
-  malzeme1:Yup.string(),
+
   malzeme2:Yup.string(),
   ozel:Yup.string(),
 });
@@ -21,7 +21,7 @@ const Form = (props) => {
       isim: "",
       boyut: "",
       cesit: "",  
-      malzeme1: {firstM:"",secondM:"",thirdM:""},
+      malzeme1: [],
       malzeme2: "",
       ozel: "",
   }
@@ -32,7 +32,7 @@ const Form = (props) => {
       isim: "İsim Giriniz",
       boyut: "",
       cesit: "",
-      malzeme1: "",
+ 
       malzeme2: "",
       ozel: "",
   });
@@ -60,7 +60,7 @@ const Form = (props) => {
        " Supreme Pizza",
         "Pepperoni Pizza",
         "Gennaro Pizza"],
-        extra:["Sucuk","Pastırma","Biber"],
+        extra:["Ek Malzeme İstemiyorum","Ek Malzeme İstemiyorum","Sucuk","Pastırma","Biber"],
 
         extra1:["Salam","Sosis","Susam"]}
         
@@ -81,12 +81,23 @@ const Form = (props) => {
           setOrder({...order,[name]:type==="checkbox" ? checked:value})
         }
 
-        // const handleChangeCheck= (event)=>{
-        //   const {value,name,type,checked}=event.target;
-        //   errorCreate(name,type==="checkbox" ? checked:value);
+        const handleChangeCheck= (event)=>{
+          const {value} = event.target;
+          let malz= null;
         
-        //   setOrder({...order,[name]:type==="checkbox" ? checked:value})
-        // }
+          if(order.malzeme1.includes(value)){
+            malz= order.malzeme1.filter((item)=> item !== value)
+            console.log(malz)
+          }
+          else{
+            malz=[...order.malzeme1,value]
+            console.log(malz)
+          }
+
+          (malz.length>1)? SetOrderErr({...orderErr,malzeme1: `Ek Malzeme: +${9*(malz.length-1)}₺`}) :SetOrderErr({...orderErr,malzeme1: "İlk Malzeme Bizden :P"})
+
+          setOrder({...order,malzeme1:malz})
+         }
         
   return (
     <form id="pizza-form" onSubmit={handleSubmitOrder}>
@@ -126,16 +137,20 @@ const Form = (props) => {
         </label>
         <label htmlFor="extra-rad" >
                 <div className="p-extra">
-                <h3>Ek Malzeme</h3>
-                <div>
-                {pizza.extra.map((item)=>(
-                    <label key={item}> {item}
-                         <input  type="checkbox" id="extra-radio" name={"malzeme1"} value={item} onChange={handleChangeOrder}/>
-                    </label>
-                
+                    <h3>Ek Malzeme</h3>
+                    <div>
                     
-                       ))} 
-                  </div>
+                        <label > {pizza.extra[2]}
+                            <input  type="checkbox" id="extra-rad" name={"malzeme1"} value={"sucuk"} onChange={handleChangeCheck} checked={order.malzeme1.includes("sucuk")}/>
+                        </label>
+                        <label > {pizza.extra[3]}
+                            <input  type="checkbox" id="extra-rad" name={"malzeme1"} value={"pastırma"} onChange={handleChangeCheck} checked={order.malzeme1.includes("pastırma")} /> 
+                        </label>
+                        <label > {pizza.extra[4]}
+                            <input  type="checkbox" id="extra-rad" name={"malzeme1"} value={"biber"} onChange={handleChangeCheck} checked={order.malzeme1.includes("biber")}/>
+                        </label>  
+                    </div>
+                    <div className="t-error">{orderErr.malzeme1 !== "" && <p>{orderErr.malzeme1}</p>}</div>
                 </div>
         </label>
          <label htmlFor="extra-radio" >
