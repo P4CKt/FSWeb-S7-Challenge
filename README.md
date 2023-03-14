@@ -24,24 +24,24 @@ Sitenizi tasarlarken aşağıdaki wireframe(çerçeve)'leri kılavuz olarak kull
 
 ### Görev 1: Proje Kurulumu
 
-- [ ] Forklayarak bir kopya oluşturun
-- [ ] Forku klonlayın
-- [ ] Main branch üzerinde çalışın
-- [ ] Comitinizi pushlayın: `git push origin main`
+- [+] Forklayarak bir kopya oluşturun
+- [+] Forku klonlayın
+- [+] Main branch üzerinde çalışın
+- [+] Comitinizi pushlayın: `git push origin main`
 
 ### Görev 2: Proje Gereklilikleri
 
 Bitmiş proje aşağıdaki gereklilikleri içermelidir:
 
-- [ ] Route u "/" olan ve forma linklenen bir anasayfa (button, nav bar, ya da  herhangi bir link kabul edilebilir ama id'si "order-pizza" olmalı)
-- [ ] Route u  "/pizza" olan bir sipariş formu
-- [ ] Id'si "pizza-form" olan bir form
-- [ ] Id'si "name-input" olan bir isim inputu 
-- [ ] İsim için bir doğrulama(validation) ve hata mesajı (İsim en az 2 karakter olmalıdır) (Testlerin geçtiğinden emin olmak için tam olarak bu hata mesajını kullanın) ::: BU HATA MESAJINI KULLANMAK ÇOK ÖNEMLİ (testlere dahil!)
-- [ ] Pizza boyutunun seçilebileceği "size-dropdown" id'li bir dropdown 
-- [ ] Malzemeler için bir checklist(checkbox) - en az 4 adet (ipucu: name attributeları farklı olsun!)
-- [ ] Özel seçimler için bir text input "special-text" id'li
-- [ ] "order-button" id'li bir "Siparişlere Ekle" butonu. Bu buton tıklandığında form gönderilerek girilen bilgileri içerecek bir veritabanı kaydı oluşturulacak
+- [+] Route u "/" olan ve forma linklenen bir anasayfa (button, nav bar, ya da  herhangi bir link kabul edilebilir ama id'si "order-pizza" olmalı)
+- [+] Route u  "/pizza" olan bir sipariş formu
+- [+] Id'si "pizza-form" olan bir form
+- [+] Id'si "name-input" olan bir isim inputu 
+- [+] İsim için bir doğrulama(validation) ve hata mesajı (İsim en az 2 karakter olmalıdır) (Testlerin geçtiğinden emin olmak için tam olarak bu hata mesajını kullanın) ::: BU HATA MESAJINI KULLANMAK ÇOK ÖNEMLİ (testlere dahil!)
+- [+] Pizza boyutunun seçilebileceği "size-dropdown" id'li bir dropdown 
+- [+] Malzemeler için bir checklist(checkbox) - en az 4 adet (ipucu: name attributeları farklı olsun!)
+- [+] Özel seçimler için bir text input "special-text" id'li
+- [+] "order-button" id'li bir "Siparişlere Ekle" butonu. Bu buton tıklandığında form gönderilerek girilen bilgileri içerecek bir veritabanı kaydı oluşturulacak
 
 Veri şu şekilde olmalı
 ```
@@ -59,9 +59,9 @@ Not - payload yukarıdaki verilere benzer görünmelidir
 
 Cypress'le şu testleri ekleyin:
 
-- [ ] inputa bir metin giren test
+- [+] inputa bir metin giren test
 - [ ] birden fazla malzeme seçilebilen bir test
-- [ ] formu gönderen bir test
+- [+] formu gönderen bir test
 
 Çözümünüzde en iyi uygulamaları izlemeniz, temiz ve profesyonel sonuçlar üretmeniz önemlidir. Organizasyon ve kod yapısına göre skorunuz belirlenecek. 
 Çalışmanızı gözden geçirmek, iyileştirmek ve değerlendirmek için zaman planlayın ve çalışmanız üzerinde yazım denetimi ve dilbilgisi denetimi de dahil olmak üzere temel profesyonel düzeltmeler yapın. MVP'yi karşılayan bir challenge göndermek, çok fazla kompleksleştirilmiş ama çalışmayan bir proje göndermekten daha iyidir.
@@ -75,7 +75,7 @@ Oradan, VSCode'da yeni oluşturduğunuz cypress klasöründe, e2e klasörüne gi
 
 Gerekli öğelerinizi bitirdikten sonra çalışmanızı daha da ileri götürebilirsiniz. Bu hedefler, bu modülde öğrendiğiniz şeyler olabilir veya olmayabilir, ancak az önce incelediğiniz materyal üzerine inşa edilecekler. Zaman tanıyın, sınırlarınızı zorlayın ve aşağıdaki isteğe bağlı hedeflere ulaşıp ulaşamayacağınıza bakın:
 
-- [ ] Form öğesi bölümlerini iç içe routelara dönüştürün
+- [+] Form öğesi bölümlerini iç içe routelara dönüştürün
 - [ ] Cypressle daha çok test yazın
 - [ ] Sipariş POST edilirken bir ağ hatası olasılığı için kullanıcı arabirimi oluşturun (örnek: İnternet'e bağlanılamadı)
 - [ ] Sipariş butonuna `Tebrikler! Pizza'nız yola çıktı` mesajını gösterecek ve veritabanına eklenen siparişi gösterecek bir işlevsellik ekleyin
